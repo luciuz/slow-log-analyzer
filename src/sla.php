@@ -46,7 +46,7 @@ class Parser
     /**
      * @var int
      */
-    public $skip = 3;
+    public $skip;
 
     /**
      * @var string
@@ -182,6 +182,7 @@ class Parser
     {
         $query = $obj->query;
         $query = preg_replace('~\d+(?:\.\d+)*~', 'D', $query);
+        $query = preg_replace('~\'[^\']+\'~', 'S', $query);
         $query = preg_replace('~\([^)]+\)~', '($)', $query);
         $obj->simpleQuery = $query;
     }
@@ -200,7 +201,7 @@ try {
     $parser = new Parser();
     $parser->filename = $argv[1] ?? null;
     $parser->resFilename = $argv[2] ?? null;
-    $parser->skip = $argv[3] ?? null;
+    $parser->skip = $argv[3] ?? 3;
     $parser->run();
     echo 'RESULTS', PHP_EOL;
     echo 'Total: ', $parser->totalCount, PHP_EOL;
