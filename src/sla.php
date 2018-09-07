@@ -139,7 +139,6 @@ class Parser
         return false;
     }
 
-
     /**
      * @param string $line
      * @param Obj $obj
@@ -193,7 +192,8 @@ class Parser
  */
 
 if (empty($argv[1])) {
-    echo 'Usage:', PHP_EOL, '  command input-slow.log [output-slow.log]', PHP_EOL;
+    echo 'Params:', PHP_EOL, '  inputFile [outputFile] [skip]', PHP_EOL;
+    echo 'Example:', PHP_EOL, '  php sla.php db01-slow.log', PHP_EOL;
     exit;
 }
 
